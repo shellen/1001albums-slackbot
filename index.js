@@ -1,8 +1,6 @@
-// index.js
-
 const fetch = require("node-fetch");
 
-const GROUP_ID = "computersocialclub";
+const GROUP_ID = process.env.GROUP_ID;
 const API_URL = `https://1001albumsgenerator.com/api/v1/groups/${GROUP_ID}`;
 const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
 
