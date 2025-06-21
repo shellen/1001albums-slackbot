@@ -8,8 +8,8 @@ Perfect for group listening clubs, music nerds, and Slack communities who want t
 
 ## 💡 What It Does
 
-- Pulls the current album from your 1001 Albums Generator group via its public JSON API
-- Posts the album title, artist, release year, Wikipedia link, and album art to Slack
+- Pulls the current album from your group's JSON feed on 1001 Albums Generator
+- Posts album details (name, artist, year, cover art, Wikipedia link) to a Slack channel
 - Runs daily via GitHub Actions, no server or deployment needed
 
 ---
@@ -70,10 +70,10 @@ You should see a Slack message with the current album from your group!
 
 ## 🛠 Tech Stack
 
-* Node.js (CommonJS, `node-fetch@2`)
-* GitHub Actions (cron + workflow\_dispatch)
-* Slack Incoming Webhooks
-* 1001 Albums Generator public API
+* Node.js (CommonJS, node-fetch@2)
+* GitHub Actions for scheduling and automation
+* Slack Incoming Webhooks (via Slack App)
+* Uses the `currentAlbum` field from 1001 Albums Generator group JSON API
 
 ---
 
