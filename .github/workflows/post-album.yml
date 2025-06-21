@@ -24,4 +24,5 @@ jobs:
       - name: Post album to Slack
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          GROUP_ID: ${{ secrets.GROUP_ID }}
         run: node index.js
