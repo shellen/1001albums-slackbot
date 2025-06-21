@@ -1,8 +1,3 @@
-Here's a clean and developer-friendly `README.md` for your **1001 Albums Slack Bot** project:
-
----
-
-````md
 # 🎧 1001 Albums Slack Bot
 
 A simple GitHub Actions-powered bot that fetches the daily album from your [1001 Albums Generator](https://1001albumsgenerator.com) group and posts it to a Slack channel.
@@ -112,9 +107,3 @@ MIT — feel free to fork and remix!
 * [1001 Albums Generator](https://1001albumsgenerator.com) for their awesome service
 * Slack team for making integrations still kinda fun
 
-```
-
----
-
-Let me know if you'd like a version with screenshots or a more visual "setup" section!
-```
