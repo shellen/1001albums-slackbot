@@ -1,0 +1,27 @@
+name: Post Album to Slack
+
+on:
+  schedule:
+    - cron: '0 15 * * *' # Every day at 8am Pacific / 3pm UTC
+  workflow_dispatch: # Allows manual run
+
+jobs:
+  post-to-slack:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Post album to Slack
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: node index.js
