@@ -36,7 +36,7 @@ async function postAlbumToSlack() {
 
     // 3. Build the Slack message
     const message = {
-      text: `🎧 *Today's album:* *${album.name}* by *${album.artist}* (${album.releaseDate})\n🔗 ${album.wikipediaUrl}\n🖼️ ${album.images[1]?.url || album.images[0].url}`
+      text: `🎧 *Today's album:* *${album.name}* by *${album.artist}* (${album.releaseDate})\n🔗 [Listen & rate on 1001 Albums Generator](${album.globalReviewsUrl})\n📖 [Wikipedia](${album.wikipediaUrl})\n🖼️ ${album.images[1]?.url || album.images[0].url}`
     };
 
     // 4. Post to Slack
