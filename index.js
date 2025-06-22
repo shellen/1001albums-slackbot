@@ -36,8 +36,44 @@ async function postAlbumToSlack() {
 
     // 3. Build the Slack message
     const message = {
-      text: `🎧 *Today's album:* *${album.name}* by *${album.artist}* (${album.releaseDate})\n🔗 [Listen & rate on 1001 Albums Generator](${album.globalReviewsUrl})\n📖 [Wikipedia](${album.wikipediaUrl})\n🖼️ ${album.images[1]?.url || album.images[0].url}`
-    };
+    blocks: [
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: `🎧 *Today's album:*\n*${album.name}* by *${album.artist}* (${album.releaseDate})`
+      }
+    },
+    {
+      type: "image",
+      image_url: album.images[1]?.url || album.images[0].url,
+      alt_text: album.name
+    },
+    {
+      type: "actions",
+      elements: [
+        {
+          type: "button",
+          text: {
+            type: "plain_text",
+            text: "🎵 Listen & Rate",
+            emoji: true
+          },
+          url: album.globalReviewsUrl
+        },
+        {
+          type: "button",
+          text: {
+            type: "plain_text",
+            text: "📖 Wikipedia",
+            emoji: true
+          },
+          url: album.wikipediaUrl
+        }
+      ]
+    }
+  ]
+};
 
     // 4. Post to Slack
     const slackRes = await fetch(SLACK_WEBHOOK_URL, {
