@@ -2,7 +2,7 @@
 
 A simple GitHub Actions-powered bot that fetches the daily album from your [1001 Albums Generator](https://1001albumsgenerator.com) group and posts it to a Slack channel.
 
-Perfect for group listening clubs, music nerds, and Slack communities who want to keep the rhythm alive.
+Perfect for your #music channel, group listening clubs, and Slack communities of taste and style.
 
 ---
 
@@ -10,6 +10,7 @@ Perfect for group listening clubs, music nerds, and Slack communities who want t
 
 - Pulls the current album from your group's JSON feed on 1001 Albums Generator
 - Posts album details (name, artist, year, cover art, Wikipedia link) to a Slack channel
+- Uses Slack Block Kit formatting for clean and interactive layout
 - Runs daily via GitHub Actions, no server or deployment needed
 
 ---
@@ -19,11 +20,11 @@ Perfect for group listening clubs, music nerds, and Slack communities who want t
 ### 1. Clone this repo
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/1001albums-slackbot.git
+git clone https://github.com/shellen/1001albums-slackbot.git
 cd 1001albums-slackbot
 ````
 
-### 2. Install dependencies (for local testing)
+### 2. Install dependencies (for local testing only)
 
 ```bash
 npm install
@@ -44,7 +45,7 @@ Go to your GitHub repo → **Settings → Secrets → Actions** → Add the foll
 | Name                | Value                                                           |
 | ------------------- | --------------------------------------------------------------- |
 | `SLACK_WEBHOOK_URL` | Your Slack Incoming Webhook URL                                 |
-| `GROUP_ID`          | Your 1001 Albums Generator group ID (e.g. `computersocialclub`) |
+| `GROUP_ID`          | Your 1001 Albums Generator group ID (e.g. `my-group-name`) |
 
 ### 5. Commit and Push
 
@@ -79,11 +80,14 @@ You should see a Slack message with the current album from your group!
 
 ## 💬 Example Slack Message
 
-```
-🎧 Today's album: *OK Computer* by *Radiohead* (1997)
-🔗 https://en.wikipedia.org/wiki/OK_Computer
-🖼️ https://upload.wikimedia.org/...
-```
+📻 1001 Albums Pick of the Day
+
+🎧 Today's album:
+*Are You Experienced* by *Jimi Hendrix* (1967)
+
+🖼️ [Album cover displayed here]
+
+[ 🎵 Listen & Rate ]   [ 📖 Wikipedia ]
 
 ---
 
