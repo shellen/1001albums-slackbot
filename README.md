@@ -42,9 +42,9 @@ npm install
 
 Go to your GitHub repo → **Settings → Secrets → Actions** → Add the following secrets:
 
-| Name                | Value                                                           |
-| ------------------- | --------------------------------------------------------------- |
-| `SLACK_WEBHOOK_URL` | Your Slack Incoming Webhook URL                                 |
+| Name                | Value                                                      |
+| ------------------- | ---------------------------------------------------------- |
+| `SLACK_WEBHOOK_URL` | Your Slack Incoming Webhook URL                            |
 | `GROUP_ID`          | Your 1001 Albums Generator group ID (e.g. `my-group-name`) |
 
 ### 5. Commit and Push
@@ -69,12 +69,41 @@ You should see a Slack message with the current album from your group!
 
 ---
 
+## 🕒 Adjusting the Time the Album Posts
+
+This bot uses GitHub Actions' [cron syntax](https://crontab.guru/) to schedule the post. The default schedule is:
+
+```yaml
+on:
+  schedule:
+    - cron: '0 15 * * *'  # Every day at 15:00 UTC (8:00 AM Pacific)
+```
+
+### ⏰ To change when your group receives the album:
+
+1. Open `.github/workflows/post-album.yml`
+2. Update the `cron` field using [crontab.guru](https://crontab.guru/)
+3. Remember that GitHub Actions schedules are **in UTC**.
+
+#### Examples:
+
+| Local Time (PST/PDT) | UTC Cron     | What to use |
+| -------------------- | ------------ | ----------- |
+| 8:00 AM Pacific      | `0 15 * * *` | *(default)* |
+| 9:00 AM Eastern      | `0 14 * * *` | 14:00 UTC   |
+| 7:00 AM CET          | `0 6 * * *`  | 06:00 UTC   |
+
+> Want it at 5:30 PM your time? Use [crontab.guru](https://crontab.guru/) to convert that to UTC and update the workflow accordingly.
+
+---
+
 ## 🛠 Tech Stack
 
-* Node.js (CommonJS, node-fetch@2)
+* Node.js (CommonJS, `node-fetch@2`)
 * GitHub Actions for scheduling and automation
 * Slack Incoming Webhooks (via Slack App)
 * Uses the `currentAlbum` field from 1001 Albums Generator group JSON API
+* Slack Block Kit for modern message formatting
 
 ---
 
@@ -85,9 +114,9 @@ You should see a Slack message with the current album from your group!
 🎧 Today's album:
 *Are You Experienced* by *Jimi Hendrix* (1967)
 
-🖼️ [Album cover displayed here]
+🖼️ \[Album cover displayed here]
 
-[ 🎵 Listen & Rate ]   [ 📖 Wikipedia ]
+\[ 🎵 Listen & Rate ]   \[ 📖 Wikipedia ]
 
 ---
 
@@ -110,4 +139,3 @@ MIT — feel free to fork and remix!
 
 * [1001 Albums Generator](https://1001albumsgenerator.com) for their awesome service
 * Slack team for making integrations still kinda fun
-
